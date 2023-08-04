@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Serviet</display-name>
+  
+  <servlet>
+  	<servlet-name>hello</servlet-name>
+  	<servlet-class>com.penhuin.servlet.hello.HelloController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <!-- ex01 url mapping -->
+  <servlet>
+  	<servlet-name>ex01</servlet-name>
+  	<servlet-class>com.penhuin.servlet.servlet.ex.Ex01Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/servlet/ex01</url-pattern>
+  </servlet-mapping>
+  
+  <!-- test01 -->
+  
+  <servlet>
+  	<servlet-name>test01</servlet-name>
+  	<servlet-class>com.penhuin.servlet.servlet.test.Test01</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test01</servlet-name>
+  	<url-pattern>/servlet/test01</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!-- test02 -->
+   
+   <servlet>
+  	<servlet-name>test02</servlet-name>
+  	<servlet-class>com.penhuin.servlet.servlet.test.test02</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test02</servlet-name>
+  	<url-pattern>/servlet/test02</url-pattern>
+  </servlet-mapping>
+  
+  <!-- test03 -->
+  
+  <servlet>
+  	<servlet-name>test03</servlet-name>
+  	<servlet-class>com.penhuin.servlet.servlet.test.Test03</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test03</servlet-name>
+  	<url-pattern>/servlet/test03</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+</web-app>
