@@ -24,11 +24,11 @@ public class Test09 extends HttpServlet{
 		
 		
 		out.println("<html><head><title>지원결과</title></head> <body>");
-		out.println("<hr> <div>지원내용</div> <div>" + introduce + "</div>");
 		
 		out.println("<h1>" + name + "님 지원이 완료되었습니다.</h1>");
+		out.println("<hr> <div>지원내용</div> <div>" + introduce + "</div>");
 		
-		out.println("<.body></html>");
+		out.println("</body></html>");
 		
 		
 	}
