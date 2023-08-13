@@ -23,7 +23,7 @@ public class Test01 extends HttpServlet {
 		Date now = new Date();
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일");
-	
+	 
 		String dateTimeString = formatter.format(now);
 		
 		PrintWriter out = response.getWriter();
