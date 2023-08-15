@@ -38,7 +38,7 @@
 
  	<%= option %>
 	<div class = "container">
-		<h1 class= "text-center">장 목록</h1>
+		<h1>검색 결과</h1>
 		<table class= "table text-center">
 				<thead>
 					<tr>
@@ -54,6 +54,13 @@
 						if(menu.equals(store.get("menu"))) {
 							//option 값에 따라 tr 태그 포함 여부 결정
 							double point = (Double)store.get("point");
+							// option이 null 일때는
+							// option이 on 이고, point 가 4.0 이상인경우
+							if(option == null || option.equals("on") && point > 4.0){
+							// option.equals("on") 없어두됨
+							// ||(또는)
+							
+							
 							
 						%>
 				
@@ -62,7 +69,8 @@
 						<td><%= store.get("name") %></td>
 						<td><%= store.get("point") %></td>
 					</tr>
-					<% 	} 
+					<% 		}
+						} 
 					} %>
 					
 				</tbody>
