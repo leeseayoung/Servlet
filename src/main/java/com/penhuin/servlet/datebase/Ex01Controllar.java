@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.penhuin.servlet.common.MysqlService;
+
 @WebServlet("/db/ex01")
 public class Ex01Controllar extends HttpServlet {
 
@@ -25,40 +27,72 @@ public class Ex01Controllar extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		// 데이터베이스 접속
+		MysqlService mysqlService = new MysqlService();
+		mysqlService.connect();
+		
+		String selecrQuery = "SELECT * FROM `used_goods`";
+		ResultSet resultSet = statement.executeQuery(selectQuery);
+		
+		
+		out.println("<html><head><title>중고물품</title></head> <body>");
 		try {
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-			// 서버 주서 ,아이디, 비밀번호
-			String url = "jdbc:mysql://localhost:3307/leeseayoung";
-			String userId = "root";
-			String password = "root";
-			
-			Connection connection = DriverManager.getConnection(url, userId, password);
-			Statement statement  = connection.createStatement();
-			
-			String selectQuery = "SELECT * FROM `used_goods`;";
-			ResultSet resultSet = statement.executeQuery(selectQuery);
-			
-			out.println("<html><head><title>중고물품</title></head> <body>");
-			
 			while(resultSet.next()) {
 				String title = resultSet.getString("title");
 				int price = resultSet.getInt("price");
 				
 				//제목 : 풀스 팝니다. : 30000원
-				out.println("<div>제목 : " + title + "가격 : " + price + "</div>");
+			out.println("<div>제목 : " + title + "가격 : " + price + "</div>");
+				}
+			
+			}catch (SQLException e) {
 				
+				e.printStackTrace();
 			}
 			
-			
 			out.println("</body></html>");
-		
 			
-		} catch (SQLException e) {
 			
-			e.printStackTrace();
-		}
+			String insertQuery = "INSER INTO `user_goods`;";
+			
+			int count = mysqlService.update(insertQuery);
+			out.println("<div>삽입 결과 : " + count + "</div>");
+			
+			mysqlService.disconnect();
 		
+		// 데이터베이스 접속
+//		try {
+//			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+//			// 서버 주서 ,아이디, 비밀번호
+//			String url = "jdbc:mysql://localhost:3307/leeseayoung";
+//			String userId = "root";
+//			String password = "root";
+//			
+//			Connection connection = DriverManager.getConnection(url, userId, password);
+//			Statement statement  = connection.createStatement();
+//			
+//			String selectQuery = "SELECT * FROM `used_goods`;";
+//			ResultSet resultSet = statement.executeQuery(selectQuery);
+//			
+//			out.println("<html><head><title>중고물품</title></head> <body>");
+//			
+//			while(resultSet.next()) {
+//				String title = resultSet.getString("title");
+//				int price = resultSet.getInt("price");
+//				
+//				//제목 : 풀스 팝니다. : 30000원
+//				out.println("<div>제목 : " + title + "가격 : " + price + "</div>");
+//				
+//			}
+//			
+//			
+//			out.println("</body></html>");
+//		
+//			
+//		} catch (SQLException e) {
+//			
+//			e.printStackTrace();
+//		}
+//		
 	}
 	
 	
