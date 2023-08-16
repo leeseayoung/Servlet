@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MysqlService {
-	//외부 에서는 사용 불가능
-	public static MysqlService mysqlServlic = null;
 	
+	private static MysqlService mysqlService = null;
 	
 	private Connection connection;
 	private Statement statement;
@@ -19,70 +18,71 @@ public class MysqlService {
 		
 		if(mysqlService == null) {
 			mysqlService = new MysqlService();
-			
 		}
 		
 		return mysqlService;
-		
 	}
 	
-	
-	// 데이버 베이스 접속
+	// 데이터 베이스 접속
 	public void connect() {
+		// 데이터베이스 접속 
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-		
-			// 서버 주서 ,아이디, 비밀번호
-			String url = "jdbc:mysql://localhost:3307/leeseayoung";
+			
+			// 서버 주소, 아이디, 비밀번호 
+			String url = "jdbc:mysql://localhost:3306/dulumary_0720";
 			String userId = "root";
 			String password = "root";
 			
 			connection = DriverManager.getConnection(url, userId, password);
-			statement  = connection.createStatement();
-		
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				}
-			}
-	
-	//쿼리 수행
-		public ResultSet select(String query) {
-		ResultSet resultSet;
-		try {
-			ResultSet sratement = statement.executeQuery(query);		
-			return resultSet;
+			statement = connection.createStatement();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		}
+	}
+	
+	// select 쿼리 수행
+	public ResultSet select(String query) {
+		
+		ResultSet resultSet;
+		try {
+			resultSet = statement.executeQuery(query);
+			return resultSet;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
 			return null;
-			}
 		}
-
-		
-	//insert, update, delete
-		public int update(String query) {
-			//실행된 행의 개수
-			try {
-				int count = statement.executeUpdate(query);
-				return count;
-				
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-				//음수면 잘못됨
-				return - 1;
-			}
-		}
-		
-		
-		
-		
-	// 데이터 데이스 접속 끊기
-	public void discconnect() {
 		
 	}
 	
+	// insert, update, delete
+	public int update(String query) {
+		// 실행된 행의 개수 
+		try {
+			int count = statement.executeUpdate(query);
+			return count;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+			return -1;
+		}
+	}
 	
+	
+	// 데이터 베이스 접속 끊기 
+	public void disconnect() {
+		try {
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
