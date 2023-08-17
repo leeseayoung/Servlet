@@ -15,7 +15,6 @@
 																//이게 지금 미완료
 		ResultSet resultSet =  mysqlService.select("SELECT * FROM `user`;");
 		
-		
 	%>
 		
 	
@@ -37,8 +36,6 @@
 			</tr>
 		<% } %>
 		</tbody>
-	
-	
 	
 	</table>
 

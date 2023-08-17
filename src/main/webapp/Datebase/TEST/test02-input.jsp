@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>test02-input</title>
+<title>즐겨찾기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 <body>
 
-		<form method="get" action="/UserInsertController 여기보면서 해보면됨">
+		<form method="get" action="/db/test02-insert">
 			<h1>즐겨찾기 추가</h1>
 			<label>사이트명 : </label><br>
 			<input type="text" name="name"><br>

@@ -30,7 +30,7 @@ public class MysqlService {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			
 			// 서버 주소, 아이디, 비밀번호 
-			String url = "jdbc:mysql://localhost:3307/leeseayoung";
+			String url = "jdbc:mysql://localhost:3306/leeseayoung";
 			String userId = "root";
 			String password = "root";
 			

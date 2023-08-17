@@ -17,9 +17,9 @@ public class UserInsertController extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		//다른페이지 이동이기 때문에 노필요
-//		response.setContentType("text/plain");
+		response.setContentType("text/plain");
 		
-//		PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 			
 		// 요청에서 전달한 이름, 생년월일, 이메일 정보를 한행을 insert 한다.
 		String name = request.getParameter("name");
@@ -37,7 +37,7 @@ public class UserInsertController extends HttpServlet {
 		
 		int count = mysqlService.update(query);
 		
-//		out.println("실행결과 : " + count);
+		out.println("실행결과 : " + count);
 		
 		mysqlService.disconnect();
 		
