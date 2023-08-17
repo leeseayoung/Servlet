@@ -48,7 +48,7 @@ public class Ex01Controllar extends HttpServlet {
 		}
 		
 		
-		
+		// 개수 세기
 //		String insertQuery = "INSERT INTO `used_goods`\r\n"
 //				+ "(`sellerId`, `title`, `price`, `description`)\r\n"
 //				+ "VALUE\r\n"

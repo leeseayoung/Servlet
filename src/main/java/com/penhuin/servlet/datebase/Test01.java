@@ -22,22 +22,27 @@ public class Test01 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
+		// mysql 얻어온다(접속)
 		MysqlService mysqlService = MysqlService.getInstance();
+		//데이터베이스 접속
 		mysqlService.connect();
+		// 조건
+		String selectQuery = "SELECT `address`, `area`, `type` FROM `real_estate` \r\n"
+				+ "ORDER BY `id` DESC LIMIT 10;";
 		
-		String selectQuery = "SELECT* FROM `real_estate`;";
+
 		ResultSet resultSet = mysqlService.select(selectQuery);
 		
 		
-		
-		try {
+	
+		try {		//다음이 있으면 트루 없으면 flase
 			while(resultSet.next()) {
 				String address = resultSet.getString("address");
 				int area = resultSet.getInt("area");
 				String type = resultSet.getString("type");
 				
 				// 매물 주소: + address +, + 면적 : + 타입
-				out.println("매물 주소 : " + address + "," + " 면적 : " + area + "타입 : " + type);
+				out.println("매물 주소 : " + address + "," + " 면적 : " + area + ", 타입 : " + type);
 				
 			}
 		} catch (SQLException e) {
@@ -47,7 +52,7 @@ public class Test01 extends HttpServlet {
 		
 		
 
-
+		// 사용이 다되면
 		mysqlService.disconnect();
 		
 		
