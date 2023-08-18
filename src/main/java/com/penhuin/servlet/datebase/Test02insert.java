@@ -14,26 +14,30 @@ import com.penhuin.servlet.common.MysqlService;
 public class Test02insert extends HttpServlet {
 	
 		@Override
-		public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+			//response.setContentType("text/plain");
+			//PrintWriter out = response.getWriter();
 			
-			
+			// 사이트 이름과 사이트 주소를 전달 받고 ,해당 값을 datebase에 저장한다.
 			
 			String name = request.getParameter("name");
 			String url = request.getParameter("url");
 			
 			MysqlService mysqlService = MysqlService.getInstance();
-			
+			//(접속)
 			mysqlService.connect();
 			
 			String query = "INSERT INTO `url_date`\r\n"
 					+ "(`name`, `url`)\r\n"
 					+ "VALUES\r\n"
-					+ "('"+ name +"', '"+ url +"'),;";
+					+ "('"+ name +"', '"+ url +"');";
 			
 			
+			//여기부터 중요(이거 중요)
+			mysqlService.update(query);
 			
-			
+			// out.println("실행결과 : " + count);
 			
 			// 끝
 			mysqlService.disconnect();
